@@ -27,7 +27,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
    1. Perform code formatting & type testing.
    2. Perform unit testing.
    3. Perform static code analysis testing to detect security risks.
-   4. Build the Docker image and push to AWS ECR or other image repository.
+   4. Docker image build testing.
 7. When a merge to the main branch is detected, Azure DevOps pipeline should be configured with steps to:
    1. Build the Docker image and push to AWS ECR or other image repository.
    2. Deploy new code to the development environment.
