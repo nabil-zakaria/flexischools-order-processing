@@ -36,7 +36,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
    5. Enable a Feature Flag configured in the Fargate service code to test writes to the database work as expected.
    6. Perform Integration and/or End-to-End testing.
       1. If a problem is detected:
-         1. Automatically rollback the database migration.
+         1. Use Flyway or Liquidbase to automatically rollback the database migration.
          2. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
       2. If all tests pass and writes to the database work correctly:
          1. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
@@ -50,7 +50,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 13. Enable a Feature Flag configured in the staging environment Fargate service code to test writes to the database work as expected.
 14. Perform Integration and/or End-to-End testing.
     1. If a problem is detected writing to the database:
-       1. Automatically rollback the database migration.
+       1. Use Flyway or Liquidbase to automatically rollback the database migration.
        2. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
     2. If all tests pass and writes to the database work correctly:
        1. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
@@ -64,7 +64,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 21. Enable a Feature Flag configured in the production environment Fargate service code to test writes to the database work as expected.
 22. Perform Integration and/or End-to-End testing.
     1. If a problem is detected writing to the database:
-       1. Automatically rollback the database migration.
+       1. Use Flyway or Liquidbase to automatically rollback the database migration.
        2. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
     2. If all tests pass and writes to the database work correctly:
        1. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
