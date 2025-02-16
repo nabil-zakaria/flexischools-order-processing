@@ -24,10 +24,10 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 5. Azure DevOps pipelines should be configured to perform steps whenever it detects a merge to a branch.
    1. Merging to a feature branch can perform different steps compared to main.
 6. When a merge to a feature branch is detected, Azure DevOps pipeline should be configured with steps to:
-   1. Build any necessary assets (such as a Docker image and publishing to AWS ECR or other image repository).
-   2. Perform code formatting & type testing.
-   3. Perform unit testing and/or CDK stack testing (such as using [cdk-nag](https://github.com/cdklabs/cdk-nag)) against the new build.
-   4. Perform static code analysys testing to detect security risks.
+   1. Perform code formatting & type testing.
+   2. Perform unit testing and/or CDK stack testing (such as using [cdk-nag](https://github.com/cdklabs/cdk-nag)).
+   3. Perform static code analysis testing to detect security risks.
+   4. Build the Docker image and push to AWS ECR or other image repository.
 7. When a merge to the main branch is detected, Azure DevOps pipeline should be configured with steps to:
    1. Reuse previous built asset (e.g Docker image).
    2. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
@@ -38,11 +38,11 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 8. Azure DevOps pipeline should be configured with a manual [Approvals](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) step to approve the release of new code to the staging environment.
    1. The approvers could be multiple senior members of the DevOps team.
    2. The staging RDS DB should be kept in sync with the production RDS DB.
-      1. This can be faciliated by a nightly job that performs a RDS snapshot copy and restore between the production & staging region (If necessary the data contained in the staging RDS instance should be sanitized to prevent the leakage of sensitive data.)
-      2. Or if the BB backup is relatively fast, Azure DevOps pipeline can be configured to take a backup of the RDS DB in the staging environment as part of the release process.
-9. Once the Staging release is approved, the new code is deployed to the staging environment.
+      1. This can be faciliated by a nightly job that performs a RDS snapshot copy and restore between the production & staging region (If necessary, the data contained in the staging RDS instance should be sanitized to prevent the leakage of sensitive data).
+      2. Or if the RDS DB backup is relatively fast, Azure DevOps pipeline can be configured to take a backup of the RDS DB in the staging environment as part of the release process.
+9. Once the staging release is approved, the new code is deployed to the staging environment.
 10. The DevOps team can then perform any further testing of the new code in the staging environment.
-11. Another manual step in the Azure DevOps pipeline is necessary to approve the deployment to the production environment.
+11. A final manual step in the Azure DevOps pipeline is necessary to approve the deployment to the production environment.
     1. This step allows senior members of the team to perform final review before its deployment to production.
 
 ## Continous Deployment
