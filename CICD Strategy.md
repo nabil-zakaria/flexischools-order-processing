@@ -35,11 +35,11 @@ The following CI/CD strategy can be used to deploy  & manage this project.
    4. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
    5. Enable a Feature Flag configured in the Fargate service code to test writes to the database work as expected.
    6. Perform Integration and/or End-to-End testing.
-      1. If all tests pass and writes to the database work correctly:
-         1. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
-      2. If a problem is detected:
+      1. If a problem is detected:
          1. Automatically rollback the database migration.
          2. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
+      2. If all tests pass and writes to the database work correctly:
+         1. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
    7. The DevOps team can perform manual verification in the development environment at this stage if necessary.
 8. Azure DevOps pipeline should be configured with a manual [Approvals](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) step to approve the release of new code to the staging environment.
    1. The approvers could be multiple senior members of the DevOps team.
@@ -49,11 +49,11 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 12. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
 13. Enable a Feature Flag configured in the staging environment Fargate service code to test writes to the database work as expected.
 14. Perform Integration and/or End-to-End testing.
-      1. If all tests pass and writes to the database work correctly:
-         1. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
-      2. If a problem is detected writing to the database:
-         1. Automatically rollback the database migration.
-         2. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
+    1. If a problem is detected writing to the database:
+       1. Automatically rollback the database migration.
+       2. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
+    2. If all tests pass and writes to the database work correctly:
+       1. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
 15. The DevOps team can then perform any further testing of the new code in the staging environment.
 16. A final manual step in the Azure DevOps pipeline is necessary to approve the deployment to the production environment.
     1. This step allows senior members of the team to perform final review before its deployment to production.
@@ -63,11 +63,11 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 20. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
 21. Enable a Feature Flag configured in the production environment Fargate service code to test writes to the database work as expected.
 22. Perform Integration and/or End-to-End testing.
-      1. If all tests pass and writes to the database work correctly:
-         1. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
-      2. If a problem is detected writing to the database:
-         1. Automatically rollback the database migration.
-         2. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
+    1. If a problem is detected writing to the database:
+       1. Automatically rollback the database migration.
+       2. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
+    2. If all tests pass and writes to the database work correctly:
+       1. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
 
 ## Continous Deployment
 
