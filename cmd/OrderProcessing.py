@@ -23,4 +23,4 @@ if __name__ == "__main__":
 
     logger.info("Sarting SQS Poller...")
     sqs = SQS(queue_url=os.environ["QUEUE_URL"])
-    sqs.poll_queue()
+    sqs.process_queue()
