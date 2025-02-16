@@ -91,6 +91,7 @@ that receives messages from an SQS queue representing orders that need to be pro
    cdk destroy
    ```
 
-2. The Stack will fail to delete cleanly due to the RDS DB being configured with termination protection (This follows best practice).
-3. Navigate to the RDS console and delete the RDS DB.
-4. Navigate to the CloudFormation console, and delete the Stack.
+2. The stack will fail to delete cleanly due to the RDS DB being configured with Termination Protection enabled (This follows best practice).
+3. Navigate to the RDS console and locate the Flexischools RDS DB.
+4. Modify the configuration of the RDS DB and disable Termination Protection.
+5. Navigate to the CloudFormation console, locate the Flexischools stack and select "Delete".
