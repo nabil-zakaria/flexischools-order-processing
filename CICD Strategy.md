@@ -43,7 +43,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
    7. The DevOps team can perform manual verification in the development environment at this stage if necessary.
 8. Azure DevOps pipeline should be configured with a manual [Approvals](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) step to approve the release of new code to the staging environment.
    1. The approvers could be multiple senior members of the DevOps team.
-9. Once the staging release is approved, build the Docker image and push to AWS ECR or other image repository.
+9. Once the staging release is approved, the pipeline builds the Docker image and pushes to AWS ECR or other image repository.
 10. Deploy new code to the staging environment.
 11. Use a Feature Flag configured in the staging environment Fargate service code to disable processing of messages from the staging SQS queue.
 12. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
@@ -57,7 +57,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 15. The DevOps team can then perform any further testing of the new code in the staging environment.
 16. A final manual step in the Azure DevOps pipeline is necessary to approve the deployment to the production environment.
     1. This step allows senior members of the team to perform final review before its deployment to production.
-17. Once the production release is approved, build the Docker image and push to AWS ECR or other image repository.
+17. Once the production release is approved, the pipeline builds the Docker image and pushes to AWS ECR or other image repository.
 18. The new code is deployed to the production environment.
 19. Use a Feature Flag configured in the production environment Fargate service code to disable processing of messages from the production SQS queue.
 20. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
