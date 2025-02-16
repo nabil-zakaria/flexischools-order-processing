@@ -1,8 +1,3 @@
-# from aws_cdk.assertions import Template
-# from flexischools.flexischools_stack import FlexischoolsStack
-# import aws_cdk as cdk
-
-
 import aws_cdk as core
 import aws_cdk.assertions as assertions
 import pytest

@@ -13,8 +13,9 @@ that receives messages from an SQS queue representing orders that need to be pro
 2. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with the default region you wish to deploy the stack to.
 3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed
 4. [AWS CDK bootstrapping](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping-env.html) to prepare the AWS account for CDK deployments.
-5. [Python 3.13](https://www.python.org/downloads/) installed
-6. [Docker](https://docs.docker.com/engine/install/) installed
+5. [Docker](https://docs.docker.com/engine/install/) installed
+6. [Python 3.13](https://www.python.org/downloads/) installed
+7. [Python Poetry](https://python-poetry.org) installed
 
 # Deployment Instructions
 
