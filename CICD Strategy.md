@@ -35,9 +35,9 @@ The following CI/CD strategy can be used to deploy  & manage this project.
    4. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
    5. Enable a Feature Flag configured in the Fargate service code to test writes to the database work as expected.
    6. Perform Integration and/or End-to-End testing.
-      1. If writes to the database are functioning correctly:
+      1. If all tests pass and writes to the database work correctly:
          1. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
-      2. If a problem is detected writing to the database:
+      2. If a problem is detected:
          1. Automatically rollback the database migration.
          2. Enable a Feature Flag configured in the development environment Fargate service to begin normal processing of messages from the development SQS queue again.
    7. The DevOps team can perform manual verification in the development environment at this stage if necessary.
@@ -49,7 +49,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 12. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
 13. Enable a Feature Flag configured in the staging environment Fargate service code to test writes to the database work as expected.
 14. Perform Integration and/or End-to-End testing.
-      1. If writes to the database are functioning correctly:
+      1. If all tests pass and writes to the database work correctly:
          1. Enable a Feature Flag configured in the staging environment Fargate service to enable processing of messages from the staging SQS queue again.
       2. If a problem is detected writing to the database:
          1. Automatically rollback the database migration.
@@ -63,7 +63,7 @@ The following CI/CD strategy can be used to deploy  & manage this project.
 20. Use Flyway or Liquidbase to perform schema validation and apply database migrations (if detected).
 21. Enable a Feature Flag configured in the production environment Fargate service code to test writes to the database work as expected.
 22. Perform Integration and/or End-to-End testing.
-      1. If writes to the database are functioning correctly:
+      1. If all tests pass and writes to the database work correctly:
          1. Enable a Feature Flag configured in the production environment Fargate service to enable processing of messages from the production SQS queue again.
       2. If a problem is detected writing to the database:
          1. Automatically rollback the database migration.
