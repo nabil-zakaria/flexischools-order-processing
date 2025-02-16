@@ -8,13 +8,13 @@ that receives messages from an SQS queue representing orders that need to be pro
 
 # Requirements
 
-1. Create an AWS account if you do not already have one and log in. 
+1. Create an AWS account if you do not already have one.
    1. The IAM user that you use must have sufficient permissions to make necessary AWS service calls and manage AWS resources.
-2. AWS CLI installed and configured with the default region you wish to deploy the stack to.
-3. Git installed
-4. AWS CDK installed
-5. Python 3.13 installed
-6. Docker installed
+2. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured with the default region you wish to deploy the stack to.
+3. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed
+4. [AWS CDK bootstrapping](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping-env.html) to prepare the AWS account for CDK deployments.
+5. [Python 3.13](https://www.python.org/downloads/) installed
+6. [Docker](https://docs.docker.com/engine/install/) installed
 
 # Deployment Instructions
 
