@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "flexischools"
+version = "0.1.0"
+description = "Flexischools Order-Processing Service"
+authors = ["nabil-zakaria <nabil.zakaria@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+aws-cdk-lib = "^2.178.2"
+constructs = "^10.4.2"
+
+
+[tool.poetry.group.prod.dependencies]
+boto3 = "^1.36.20"
+flask = "^3.1.0"
+
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+poetry-plugin-export = "^1.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

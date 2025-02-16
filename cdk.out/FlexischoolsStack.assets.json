@@ -1,0 +1,48 @@
+{
+  "version": "39.0.0",
+  "files": {
+    "7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200": {
+      "source": {
+        "path": "asset.7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "761018873360-ap-southeast-2": {
+          "bucketName": "cdk-hnb659fds-assets-761018873360-ap-southeast-2",
+          "objectKey": "7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200.zip",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-file-publishing-role-761018873360-ap-southeast-2"
+        }
+      }
+    },
+    "b61a2fcbda8f75013310c469229633249900b95b4fa1d470c18ed372b24fff35": {
+      "source": {
+        "path": "FlexischoolsStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "761018873360-ap-southeast-2": {
+          "bucketName": "cdk-hnb659fds-assets-761018873360-ap-southeast-2",
+          "objectKey": "b61a2fcbda8f75013310c469229633249900b95b4fa1d470c18ed372b24fff35.json",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-file-publishing-role-761018873360-ap-southeast-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {
+    "OrderProcessing-e9d9bb97bf03674a7b0eab737fec316e6b92ad1bbe5bec15b6791e488d2e7992": {
+      "source": {
+        "directory": "asset.e9d9bb97bf03674a7b0eab737fec316e6b92ad1bbe5bec15b6791e488d2e7992"
+      },
+      "destinations": {
+        "761018873360-ap-southeast-2": {
+          "repositoryName": "cdk-hnb659fds-container-assets-761018873360-ap-southeast-2",
+          "imageTag": "e9d9bb97bf03674a7b0eab737fec316e6b92ad1bbe5bec15b6791e488d2e7992",
+          "region": "ap-southeast-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-image-publishing-role-761018873360-ap-southeast-2"
+        }
+      }
+    }
+  }
+}

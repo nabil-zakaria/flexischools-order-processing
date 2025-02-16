@@ -1,0 +1,1031 @@
+{
+  "version": "39.0.0",
+  "artifacts": {
+    "FlexischoolsStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "FlexischoolsStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "FlexischoolsStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://761018873360/ap-southeast-2",
+      "properties": {
+        "templateFile": "FlexischoolsStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-deploy-role-761018873360-ap-southeast-2",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-cfn-exec-role-761018873360-ap-southeast-2",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-761018873360-ap-southeast-2/b61a2fcbda8f75013310c469229633249900b95b4fa1d470c18ed372b24fff35.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "FlexischoolsStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::761018873360:role/cdk-hnb659fds-lookup-role-761018873360-ap-southeast-2",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "FlexischoolsStack.assets"
+      ],
+      "metadata": {
+        "/FlexischoolsStack/FlexischoolsVPC": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "maxAzs": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPC5D052703"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": true,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": true,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addNatGateway": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1Subnet0408C145"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1RouteTable9486FB68"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1RouteTableAssociation15FAC57E"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1DefaultRouteE7F9B684"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1EIPDE110BB9"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet1/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet1NATGatewayED244CB7"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": true,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": true,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addNatGateway": [
+                "*"
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2Subnet00D633C0"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2RouteTable601DC5A8"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2RouteTableAssociation5EEA85DF"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2DefaultRoute222D9E5A"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/EIP": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2EIP24D6534C"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PublicSubnet2/NATGateway": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPublicSubnet2NATGateway6D780AB5"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet1": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": false,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": false,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet1Subnet50A5E582"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet1RouteTableAC96380B"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet1RouteTableAssociation082B8645"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet1DefaultRoute6A24AC81"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet2": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": false,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "availabilityZone": "*",
+              "vpcId": "*",
+              "cidrBlock": "*",
+              "mapPublicIpOnLaunch": false,
+              "ipv6CidrBlock": "*",
+              "assignIpv6AddressOnCreation": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {}
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet2Subnet6E191004"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet2RouteTable565DEC1F"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet2RouteTableAssociationD316A254"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/PrivateSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCPrivateSubnet2DefaultRoute329D3EC5"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCIGWFF3171F1"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCVPCGW87B416B4"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/RestrictDefaultSecurityGroupCustomResource": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsVPC/RestrictDefaultSecurityGroupCustomResource/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsVPCRestrictDefaultSecurityGroupCustomResourceBF1D4D25"
+          }
+        ],
+        "/FlexischoolsStack/Custom::VpcRestrictDefaultSGCustomResourceProvider": [
+          {
+            "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+            "data": true
+          }
+        ],
+        "/FlexischoolsStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Role": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomVpcRestrictDefaultSGCustomResourceProviderRole26592FE0"
+          }
+        ],
+        "/FlexischoolsStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CustomVpcRestrictDefaultSGCustomResourceProviderHandlerDC833E5E"
+          }
+        ],
+        "/FlexischoolsStack/RdsSecurityGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "vpc": "*",
+              "allowAllOutbound": true,
+              "description": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addIngressRule": [
+                "*",
+                {},
+                "*",
+                "*"
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/RdsSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RdsSecurityGroup632A77E4"
+          }
+        ],
+        "/FlexischoolsStack/RdsSecurityGroup/from FlexischoolsStackFargateSecurityGroupF728A7C5:5432": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RdsSecurityGroupfromFlexischoolsStackFargateSecurityGroupF728A7C5543292E05425"
+          }
+        ],
+        "/FlexischoolsStack/FargateSecurityGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "vpc": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addIngressRule": [
+                "*",
+                {},
+                "*",
+                false
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FargateSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FargateSecurityGroup4A64555C"
+          }
+        ],
+        "/FlexischoolsStack/FargateSecurityGroup/from FlexischoolsStackFlexischoolsFargateServiceLBSecurityGroupF43E8734:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FargateSecurityGroupfromFlexischoolsStackFlexischoolsFargateServiceLBSecurityGroupF43E87348062AFBB8C"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "vpc": "*",
+              "instanceIdentifier": "*",
+              "multiAz": true,
+              "publiclyAccessible": false,
+              "securityGroups": [
+                "*"
+              ],
+              "engine": {
+                "engineType": "*",
+                "singleUserRotationApplication": "*",
+                "engineVersion": {
+                  "fullVersion": "*",
+                  "majorVersion": "*"
+                },
+                "parameterGroupFamily": "*",
+                "engineFamily": "*",
+                "defaultUsername": "*"
+              },
+              "allocatedStorage": "*",
+              "databaseName": "*",
+              "instanceType": "*",
+              "credentials": "*",
+              "storageEncrypted": true
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/SubnetGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "description": "*",
+              "vpc": "*",
+              "vpcSubnets": "*",
+              "removalPolicy": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/SubnetGroup/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsRdsInstanceSubnetGroupBDA8EFBC"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/Secret": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "encryptionKey": "*",
+              "secretName": "*",
+              "replicaRegions": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "username": "*",
+              "secretName": "*",
+              "encryptionKey": "*",
+              "excludeCharacters": "*",
+              "replaceOnPasswordCriteriaChanges": true,
+              "replicaRegions": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/Secret/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsStackFlexischoolsRdsInstanceSecret9719EA4F3fdaad7efa858a3daf9490cf0a702aeb"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/Secret/Attachment": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "secret": "*",
+              "target": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/Secret/Attachment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsRdsInstanceSecretAttachment737A96DB"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsRdsInstance/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsRdsInstance224DCFEB"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsDeadLetterQueue": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "queueName": "*",
+              "retentionPeriod": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsDeadLetterQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsDeadLetterQueueA30B8EE8"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsQueue": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "deadLetterQueue": {
+                "maxReceiveCount": "*",
+                "queue": "*"
+              },
+              "queueName": "*",
+              "visibilityTimeout": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsQueue8C143CBE"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsCluster": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "clusterName": "*",
+              "vpc": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsCluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsCluster4C8E8572"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLB2522B7F9"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/SecurityGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "vpc": "*",
+              "description": "*",
+              "allowAllOutbound": false
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addIngressRule": [
+                {
+                  "canInlineRule": true,
+                  "connections": "*",
+                  "uniqueId": "*"
+                },
+                {},
+                "*",
+                false
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addEgressRule": [
+                "*",
+                {},
+                "*",
+                true
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLBSecurityGroupA920C9EC"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/SecurityGroup/to FlexischoolsStackFargateSecurityGroupF728A7C5:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLBSecurityGrouptoFlexischoolsStackFargateSecurityGroupF728A7C580AB760CF1"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/PublicListener": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/PublicListener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLBPublicListener5132B796"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LB/PublicListener/ECSGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLBPublicListenerECSGroup504CB3C4"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/LoadBalancerDNS": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceLoadBalancerDNS51E0A692"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/ServiceURL": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceServiceURL44AAD0F8"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/TaskRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              }
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/TaskRole/ImportTaskRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/TaskRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDefTaskRoleA35408D5"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/TaskRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/TaskRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDefTaskRoleDefaultPolicyE73EFB41"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDef4CCD616E"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/Flexschools-container/LogGroup": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "retention": "*"
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/Flexschools-container/LogGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDefFlexschoolscontainerLogGroupCF1BB1F5"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/ExecutionRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "assumedBy": {
+                "principalAccount": "*",
+                "assumeRoleAction": "*"
+              },
+              "roleName": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachInlinePolicy": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addToPrincipalPolicy": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/ExecutionRole/ImportExecutionRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/ExecutionRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDefExecutionRole3A35D244"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/ExecutionRole/DefaultPolicy": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "attachToRole": [
+                "*"
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "addStatements": [
+                {}
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/TaskDef/ExecutionRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskDefExecutionRoleDefaultPolicy11FDD0D1"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceD02F46AD"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/ScalingRole": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": "*"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/TaskCount/Target": [
+          {
+            "type": "aws:cdk:analytics:construct",
+            "data": {
+              "serviceNamespace": "ecs",
+              "scalableDimension": "*",
+              "resourceId": "*",
+              "role": "*",
+              "minCapacity": "*",
+              "maxCapacity": "*"
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "scaleToTrackMetric": [
+                "*",
+                {
+                  "predefinedMetric": "*",
+                  "policyName": "*",
+                  "disableScaleIn": "*",
+                  "targetValue": "*",
+                  "scaleInCooldown": "*"
+                }
+              ]
+            }
+          },
+          {
+            "type": "aws:cdk:analytics:method",
+            "data": {
+              "scaleToTrackMetric": [
+                "*",
+                {
+                  "predefinedMetric": "*",
+                  "targetValue": "*",
+                  "policyName": "*",
+                  "disableScaleIn": "*",
+                  "scaleInCooldown": "*"
+                }
+              ]
+            }
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/TaskCount/Target/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskCountTargetDFE84C80"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/TaskCount/Target/CpuScaling/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskCountTargetCpuScaling69548989"
+          }
+        ],
+        "/FlexischoolsStack/FlexischoolsFargateService/Service/TaskCount/Target/MemoryScaling/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlexischoolsFargateServiceTaskCountTargetMemoryScalingC4707CEB"
+          }
+        ],
+        "/FlexischoolsStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/FlexischoolsStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/FlexischoolsStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "FlexischoolsStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
