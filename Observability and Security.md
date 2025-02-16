@@ -69,5 +69,6 @@ What follows is an analysis of the security risks exposed by the architecture an
   - Encrypting data at rest using KMS or Customer Managed Keys.
 - There is a risk that the RDS database credentials are leaked and used maliciously to gain access to customer data. To mitigate this risk:
   - Try to avoid using a database password altogether by relying on [RDS DB IAM authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html) if within [service limitations](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html#UsingWithRDS.IAMDBAuth.Limitations).
-  - If a password must be used, then store the database credentials in AWS Secrets Manager.
-- There is a risk that the system is made available on the public internet due to misconfiguration. Ensure the VPC is configured with private subnets where the Load Balancer, ECS Fargate Containers and RDS run. Restrict network access to these private subnets via Network Access Control lists and Security Groups. 
+  - If a password must be used, then store the database password separately in AWS Secrets Manager and configured for automatic rotation.
+- There is a risk that the system is made available on the public internet due to misconfiguration. Ensure the VPC is configured with private subnets where the Load Balancer, ECS Fargate Containers and RDS run. Restrict network access to these private subnets via Network Access Control lists and Security Groups.
+  

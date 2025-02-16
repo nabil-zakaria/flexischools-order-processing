@@ -1,10 +1,10 @@
 from aws_cdk import (
     Duration,
+    RemovalPolicy,
     Stack,
     aws_ec2 as ec2,
     aws_rds as rds,
     aws_iam as iam,
-    aws_ecr as ecr,
     aws_ecs as ecs,
     aws_sqs as sqs,
     aws_ecs_patterns as ecs_patterns,
@@ -34,11 +34,11 @@ class FlexischoolsStack(Stack):
         # Security Group for Fargate
         fargate_sg = ec2.SecurityGroup(self, id="FargateSecurityGroup", vpc=vpc)
 
-        # Allow Fargate to connect to RDS on port 5432 (PostgreSQL)
-        rds_sg.add_ingress_rule(fargate_sg, ec2.Port.tcp(5432), "Allow Fargate to connect to RDS")
+        # Allow Fargate to connect to RDS on port 5500 (non-default configured PostgreSQL)
+        rds_sg.add_ingress_rule(fargate_sg, ec2.Port.tcp(5500), "Allow Fargate to connect to RDS")
 
-        # Creates Credentials with a password generated and stored in Secrets Manager.
-        db_secret = rds.Credentials.from_generated_secret("flexischoolsuser")
+        # Creates Credentials and stores them Secrets Manager.
+        db_secret = rds.Credentials.from_generated_secret("flexischoolsuser", secret_name="Flexischools-Credentials")
 
         # Create the RDS Instance
         db = rds.DatabaseInstance(
@@ -55,6 +55,8 @@ class FlexischoolsStack(Stack):
             multi_az=True,
             publicly_accessible=False,
             storage_encrypted=True,
+            removal_policy=RemovalPolicy.RETAIN,
+            port=5500,
         )
 
         # Create an SQS Dead Letter Queue to store orders that failed to be processed
@@ -63,6 +65,7 @@ class FlexischoolsStack(Stack):
             "FlexischoolsDeadLetterQueue",
             queue_name="Flexischools-DLQ",
             retention_period=Duration.days(14),
+            enforce_ssl=True,
         )
 
         # Create SQS used for storing orders
@@ -72,6 +75,7 @@ class FlexischoolsStack(Stack):
             queue_name="Flexischools-orders-queue",
             visibility_timeout=Duration.seconds(300),
             dead_letter_queue=sqs.DeadLetterQueue(queue=dlq, max_receive_count=5),
+            enforce_ssl=True,
         )
 
         # Create ECS Cluster
@@ -114,6 +118,7 @@ class FlexischoolsStack(Stack):
             load_balancer_name="Flexschools-LoadBalancer",
             service_name="Flexischools-service",
             security_groups=[fargate_sg],
+            open_listener=False,
         )
 
         # Configure the healthcheck path used by the ALB Target Group

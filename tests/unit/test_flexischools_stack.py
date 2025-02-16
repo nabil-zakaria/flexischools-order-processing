@@ -38,6 +38,7 @@ def test_db_created(template):
             "MultiAZ": True,
             "PubliclyAccessible": False,
             "StorageEncrypted": True,
+            "Port": "5500",
         },
     )
 
@@ -47,7 +48,7 @@ def test_dlq_created(template):
         "AWS::SQS::Queue",
         {
             "QueueName": "Flexischools-DLQ",
-            "MessageRetentionPeriod": 14 * 24 * 60 * 60,  # 14 days in seconds
+            "MessageRetentionPeriod": 1209600,  # 14 days in seconds
         },
     )
 
@@ -55,7 +56,11 @@ def test_dlq_created(template):
 def test_queue_created(template):
     template.has_resource_properties(
         "AWS::SQS::Queue",
-        {"QueueName": "Flexischools-orders-queue", "VisibilityTimeout": 300, "RedrivePolicy": {"maxReceiveCount": 5}},
+        {
+            "QueueName": "Flexischools-orders-queue",
+            "VisibilityTimeout": 300,
+            "RedrivePolicy": {"maxReceiveCount": 5},
+        },
     )
 
 
