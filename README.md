@@ -48,7 +48,7 @@ that receives messages from an SQS queue representing orders that need to be pro
 1. To execute unit tests
 
    ```bash
-   python -m pytest
+   python -m pytest tests/unit/test_flexischools_stack.py
    ```
 
 ## Application Testing
