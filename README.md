@@ -80,7 +80,7 @@ that receives messages from an SQS queue representing orders that need to be pro
 8. Find service whose name starts with `Flexischools-service`
    ![Fargate Service](./images/fargate-service.png)
 
-9. View the logs for an active task and you'll see the messages where the orders are being processed
+9. View the logs for an active task and you'll see the messages where the orders are being processed and written to the RDS database.
    ![CloudWatch Logs](./images/cloudwatch-logs.png)
 
 # Cleanup
@@ -90,9 +90,3 @@ that receives messages from an SQS queue representing orders that need to be pro
    ```bash
    cdk destroy
    ```
-
-2. The stack will fail to delete cleanly due to the RDS DB being configured with Termination Protection enabled (This follows best practice).
-3. Navigate to the RDS console and locate the database named "flexischools-db".
-4. Modify the configuration of the "flexischools-db" database and disable Termination Protection.
-5. Proceed to delete the "flexischools-db" database.
-6. Navigate to the CloudFormation console, locate the stack named "FlexischoolsStack" and select "Delete".

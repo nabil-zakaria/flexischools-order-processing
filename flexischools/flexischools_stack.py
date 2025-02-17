@@ -35,28 +35,37 @@ class FlexischoolsStack(Stack):
         fargate_sg = ec2.SecurityGroup(self, id="FargateSecurityGroup", vpc=vpc)
 
         # Allow Fargate to connect to RDS on port 5500 (non-default configured PostgreSQL)
-        rds_sg.add_ingress_rule(fargate_sg, ec2.Port.tcp(5500), "Allow Fargate to connect to RDS")
+        non_default_db_port = 5500
+
+        rds_sg.add_ingress_rule(
+            fargate_sg, ec2.Port.tcp(non_default_db_port), "Allow Fargate to connect to RDS"
+        )
 
         # Creates Credentials and stores them Secrets Manager.
-        db_secret = rds.Credentials.from_generated_secret("flexischoolsuser", secret_name="Flexischools-Credentials")
+        db_secret = rds.Credentials.from_generated_secret(
+            "flexischoolsuser", secret_name="Flexischools-Credentials"
+        )
 
         # Create the RDS Instance
+        
         db = rds.DatabaseInstance(
             self,
             id="FlexischoolsRdsInstance",
             instance_identifier="Flexischools-DB",
-            engine=rds.DatabaseInstanceEngine.postgres(version=rds.PostgresEngineVersion.VER_17_2),
+            engine=rds.DatabaseInstanceEngine.postgres(
+                version=rds.PostgresEngineVersion.VER_17_2
+            ),
             vpc=vpc,
-            instance_type=ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO),
+            instance_type=ec2.InstanceType.of(
+                ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.MICRO
+            ),
             allocated_storage=20,
             security_groups=[rds_sg],
             database_name="FlexischoolsDB",
             credentials=db_secret,
-            multi_az=True,
             publicly_accessible=False,
             storage_encrypted=True,
-            removal_policy=RemovalPolicy.RETAIN,
-            port=5500,
+            port=non_default_db_port,
         )
 
         # Create an SQS Dead Letter Queue to store orders that failed to be processed
@@ -79,7 +88,9 @@ class FlexischoolsStack(Stack):
         )
 
         # Create ECS Cluster
-        cluster = ecs.Cluster(self, id="FlexischoolsCluster", cluster_name="Flexischools-cluster", vpc=vpc)
+        cluster = ecs.Cluster(
+            self, id="FlexischoolsCluster", cluster_name="Flexischools-cluster", vpc=vpc
+        )
 
         # Create Docker Image
         image = ecs.ContainerImage.from_asset(
@@ -95,6 +106,9 @@ class FlexischoolsStack(Stack):
                 "DB_HOST": db.db_instance_endpoint_address,
                 "DB_NAME": "FlexischoolsDB",
                 "DB_USER": "flexischoolsuser",
+                "DB_PORT": f"{non_default_db_port}",
+                "DB_TABLE_NAME": "orders",
+                "SECRET_ARN": db.secret.secret_arn,
                 "QUEUE_URL": queue.queue_url,
             },
             log_driver=ecs.LogDrivers.aws_logs(
@@ -104,37 +118,49 @@ class FlexischoolsStack(Stack):
         )
 
         # Create the ALB Fargate Service
-        load_balanced_fargate_service = ecs_patterns.ApplicationLoadBalancedFargateService(
-            self,
-            id="FlexischoolsFargateService",
-            cluster=cluster,
-            cpu=512,
-            memory_limit_mib=1024,
-            desired_count=1,
-            task_image_options=task_image_options,
-            public_load_balancer=False,
-            min_healthy_percent=100,
-            assign_public_ip=False,
-            load_balancer_name="Flexschools-LoadBalancer",
-            service_name="Flexischools-service",
-            security_groups=[fargate_sg],
-            open_listener=False,
+        load_balanced_fargate_service = (
+            ecs_patterns.ApplicationLoadBalancedFargateService(
+                self,
+                id="FlexischoolsFargateService",
+                cluster=cluster,
+                cpu=512,
+                memory_limit_mib=1024,
+                desired_count=1,
+                task_image_options=task_image_options,
+                public_load_balancer=False,
+                min_healthy_percent=100,
+                assign_public_ip=False,
+                load_balancer_name="Flexschools-LoadBalancer",
+                service_name="Flexischools-service",
+                security_groups=[fargate_sg],
+                open_listener=False,
+            )
         )
 
         # Configure the healthcheck path used by the ALB Target Group
-        load_balanced_fargate_service.target_group.configure_health_check(path="/health")
+        load_balanced_fargate_service.target_group.configure_health_check(
+            path="/health"
+        )
 
         # Configure the ALB Fargate Service Min & Max Capacity
-        scalable_target = load_balanced_fargate_service.service.auto_scale_task_count(min_capacity=1, max_capacity=20)
+        scalable_target = load_balanced_fargate_service.service.auto_scale_task_count(
+            min_capacity=1, max_capacity=20
+        )
 
         # Configure AutoScaling for the Fargate Service based on CPU Utilization
-        scalable_target.scale_on_cpu_utilization(id="CpuScaling", target_utilization_percent=50)
+        scalable_target.scale_on_cpu_utilization(
+            id="CpuScaling", target_utilization_percent=50
+        )
 
         # Configure AutoScaling for the Fargate Service based on Memory
-        scalable_target.scale_on_memory_utilization(id="MemoryScaling", target_utilization_percent=50)
+        scalable_target.scale_on_memory_utilization(
+            id="MemoryScaling", target_utilization_percent=50
+        )
 
         # Grant permissions to the Fargate Task Role to consume message from the SQS queue
-        queue.grant_consume_messages(load_balanced_fargate_service.task_definition.task_role)
+        queue.grant_consume_messages(
+            load_balanced_fargate_service.task_definition.task_role
+        )
 
         # Grant permisions to the Fargate Task Role to write to the RDS Instance
         load_balanced_fargate_service.task_definition.task_role.add_to_policy(
@@ -143,5 +169,13 @@ class FlexischoolsStack(Stack):
                 resources=[
                     f"arn:aws:rds-db:{self.region}:{self.account}:dbuser:{db.instance_identifier}/flexischoolsuser"
                 ],
+            )
+        )
+
+        # Grant permissions to the Fargate Task Role to read the DB credentials from Secrets Manager
+        load_balanced_fargate_service.task_definition.task_role.add_to_policy(
+            iam.PolicyStatement(
+                actions=["secretsmanager:GetSecretValue"],
+                resources=[db.secret.secret_arn],
             )
         )

@@ -35,7 +35,6 @@ def test_db_created(template):
             "EngineVersion": "17.2",
             "DBInstanceClass": "db.t3.micro",
             "DBName": "FlexischoolsDB",
-            "MultiAZ": True,
             "PubliclyAccessible": False,
             "StorageEncrypted": True,
             "Port": "5500",
